@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaBell, FaCheck, FaExternalLinkAlt, FaTimes } from 'react-icons/fa';
+import { FaBell, FaCheck } from 'react-icons/fa';
 import { notificationService } from '../../services/notificationService';
 import './NotificationBell.css';
 

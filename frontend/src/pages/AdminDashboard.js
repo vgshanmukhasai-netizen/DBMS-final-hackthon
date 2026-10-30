@@ -16,9 +16,7 @@ import {
   FaFilter,
   FaDownload,
   FaSync,
-  FaEye,
   FaExclamationTriangle,
-  FaUserShield,
 } from 'react-icons/fa';
 import {
   Chart as ChartJS,
@@ -91,7 +89,6 @@ const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
   const [teachers, setTeachers] = useState([]);
   const [deptStats, setDeptStats] = useState([]);
-  const [eventStats, setEventStats] = useState(null);
 
   // Attendance View state
   const [selectedEventId, setSelectedEventId] = useState('');
@@ -134,9 +131,9 @@ const AdminDashboard = () => {
       if (dashStats) setStats((prev) => ({ ...prev, ...dashStats }));
       const eventsList = Array.isArray(allEvents) ? allEvents : allEvents.events || [];
       setEvents(eventsList);
-      if (eventsList.length > 0 && !selectedEventId) {
-        setSelectedEventId(eventsList[0].id || '');
-        setCertEventId(eventsList[0].id || '');
+      if (eventsList.length > 0) {
+        setSelectedEventId((current) => current || eventsList[0].id || '');
+        setCertEventId((current) => current || eventsList[0].id || '');
       }
 
       setDeptStats(Array.isArray(deptData) ? deptData : deptData.departments || []);
@@ -146,10 +143,10 @@ const AdminDashboard = () => {
     } finally {
       setLoading(false);
     }
-  }, [selectedEventId]);
+  }, []);
 
   // 2. Fetch Users
-  const fetchUsers = async () => {
+  const fetchUsers = useCallback(async () => {
     try {
       setLoading(true);
       const data = await userService.getAllUsers();
@@ -160,10 +157,10 @@ const AdminDashboard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   // 3. Fetch Teachers
-  const fetchTeachers = async () => {
+  const fetchTeachers = useCallback(async () => {
     try {
       setLoading(true);
       const data = await userService.getAllTeachers();
@@ -174,10 +171,10 @@ const AdminDashboard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   // 4. Fetch Attendance for Selected Event
-  const fetchAttendance = async (eventId) => {
+  const fetchAttendance = useCallback(async (eventId) => {
     if (!eventId) return;
     try {
       setLoadingAttendance(true);
@@ -189,10 +186,10 @@ const AdminDashboard = () => {
     } finally {
       setLoadingAttendance(false);
     }
-  };
+  }, []);
 
   // 5. Fetch Certificates for Selected Event
-  const fetchCertificates = async (eventId) => {
+  const fetchCertificates = useCallback(async (eventId) => {
     if (!eventId) return;
     try {
       const data = await certificateService.getEventCertificates(eventId);
@@ -201,7 +198,7 @@ const AdminDashboard = () => {
       console.error(err);
       setEventCertificates([]);
     }
-  };
+  }, []);
 
   // Switch tab triggers
   useEffect(() => {
@@ -217,27 +214,22 @@ const AdminDashboard = () => {
       fetchUsers();
     } else if (activeTab === 'teachers') {
       fetchTeachers();
-    } else if (activeTab === 'attendance' && selectedEventId) {
-      fetchAttendance(selectedEventId);
-    } else if (activeTab === 'certificates' && certEventId) {
-      fetchCertificates(certEventId);
     } else if (activeTab === 'reports') {
-      reportService.getEventReports().then((res) => setEventStats(res)).catch(console.error);
       reportService.getDepartmentReports().then((res) => setDeptStats(Array.isArray(res) ? res : res.departments || [])).catch(console.error);
     }
-  }, [activeTab]);
+  }, [activeTab, fetchDashboardData, fetchTeachers, fetchUsers]);
 
   useEffect(() => {
     if (selectedEventId && activeTab === 'attendance') {
       fetchAttendance(selectedEventId);
     }
-  }, [selectedEventId]);
+  }, [activeTab, selectedEventId, fetchAttendance]);
 
   useEffect(() => {
     if (certEventId && activeTab === 'certificates') {
       fetchCertificates(certEventId);
     }
-  }, [certEventId]);
+  }, [activeTab, certEventId, fetchCertificates]);
 
   // Actions: Approve Teacher
   const handleApproveTeacher = async (id) => {

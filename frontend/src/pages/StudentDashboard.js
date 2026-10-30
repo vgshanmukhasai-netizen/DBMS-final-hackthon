@@ -25,7 +25,6 @@ import {
 import Navbar from '../components/common/Navbar';
 import Sidebar from '../components/common/Sidebar';
 import Footer from '../components/common/Footer';
-import LoadingSpinner from '../components/common/LoadingSpinner';
 
 import { useAuth } from '../context/AuthContext';
 import { eventService } from '../services/eventService';
