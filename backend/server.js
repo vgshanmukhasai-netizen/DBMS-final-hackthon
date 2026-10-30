@@ -21,6 +21,7 @@ const reportRoutes = require('./routes/reportRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:3000';
+let databaseInitialization;
 
 // Ensure uploads and certificates directories exist
 const uploadDir = path.join(__dirname, 'uploads');
@@ -44,6 +45,25 @@ app.use(
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const initializeDatabase = () => {
+  if (!databaseInitialization) {
+    databaseInitialization = (async () => {
+      await initDB();
+      await sequelize.sync({ alter: false });
+      console.log('[Database] Sequelize models synchronized with MySQL.');
+    })().catch((error) => {
+      databaseInitialization = null;
+      throw error;
+    });
+  }
+
+  return databaseInitialization;
+};
+
+app.use((req, res, next) => {
+  initializeDatabase().then(() => next()).catch(next);
+});
 
 // Serve static files for uploaded posters and generated certificates
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -97,12 +117,7 @@ app.use((err, req, res, next) => {
 // Database Connection and Server Initialization
 const startServer = async () => {
   try {
-    // 1. Initialize DB (creates database if missing and tests connection)
-    await initDB();
-
-    // 2. Synchronize models with MySQL database
-    await sequelize.sync({ alter: false });
-    console.log('[Database] Sequelize models synchronized with MySQL.');
+    await initializeDatabase();
 
     // 3. Start listening on specified port
     app.listen(PORT, () => {
@@ -124,4 +139,5 @@ if (require.main === module) {
   startServer();
 }
 
-module.exports = { app, startServer };
+module.exports = app;
+module.exports.startServer = startServer;

@@ -28,18 +28,21 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
 
 const initDB = async () => {
   try {
-    // 1. Connect without database to ensure DB exists
-    const connection = await mysql.createConnection({
-      host: DB_HOST,
-      port: DB_PORT,
-      user: DB_USER,
-      password: DB_PASS,
-    });
+    if (!process.env.VERCEL) {
+      const connection = await mysql.createConnection({
+        host: DB_HOST,
+        port: DB_PORT,
+        user: DB_USER,
+        password: DB_PASS,
+      });
 
-    await connection.query(`CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`);
-    await connection.end();
+      try {
+        await connection.query(`CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`);
+      } finally {
+        await connection.end();
+      }
+    }
 
-    // 2. Authenticate with Sequelize
     await sequelize.authenticate();
     console.log(`[Database] Connection to MySQL database '${DB_NAME}' established successfully.`);
   } catch (error) {
