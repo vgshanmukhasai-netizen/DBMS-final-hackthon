@@ -9,3 +9,13 @@ build/
 !.env.example
 .vercel/
 *.log
+
+node_modules/
+**/node_modules/
+.cache/
+**/.cache/
+build/
+**/build/
+.env
+.env.*
+!.env.example
