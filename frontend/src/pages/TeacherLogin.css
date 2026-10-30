@@ -1,0 +1,17 @@
+.teacher-login-page {
+  background: linear-gradient(135deg, #fdfbf7 0%, #f1ebe1 100%);
+}
+
+.teacher-badge {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.teacher-submit-btn {
+  background-color: #b45309;
+}
+
+.teacher-submit-btn:hover:not(:disabled) {
+  background-color: #92400e;
+  box-shadow: 0 4px 12px rgba(180, 83, 9, 0.25);
+}

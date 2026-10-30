@@ -1,0 +1,45 @@
+.attendance-manager-component {
+  display: flex;
+  flex-direction: column;
+}
+
+.status-radio-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.status-btn.present-active {
+  background-color: var(--success-bg);
+  color: var(--success);
+  border-color: var(--success);
+  font-weight: 700;
+}
+
+.status-btn.absent-active {
+  background-color: var(--danger-bg);
+  color: var(--danger);
+  border-color: var(--danger);
+  font-weight: 700;
+}
+
+.attendance-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}

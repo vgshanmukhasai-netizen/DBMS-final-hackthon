@@ -1,0 +1,36 @@
+.student-signup-page {
+  padding: 3rem 1rem;
+}
+
+.signup-container {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.signup-card {
+  padding: 2.5rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-col-span {
+  grid-column: span 2;
+}
+
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-col-span {
+    grid-column: span 1;
+  }
+  .signup-card {
+    padding: 1.5rem 1.25rem;
+  }
+}

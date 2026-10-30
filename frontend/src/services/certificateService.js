@@ -1,0 +1,37 @@
+import api from './api';
+
+export const certificateService = {
+  generateCertificates: async (eventId) => {
+    const response = await api.post(`/certificates/generate/${eventId}`);
+    return response.data;
+  },
+
+  getMyCertificates: async () => {
+    const response = await api.get('/certificates/my');
+    return response.data;
+  },
+
+  getEventCertificates: async (eventId) => {
+    const response = await api.get(`/certificates/event/${eventId}`);
+    return response.data;
+  },
+
+  downloadCertificate: async (id, fileName = `certificate-${id}.pdf`) => {
+    const response = await api.get(`/certificates/download/${id}`, {
+      responseType: 'blob',
+    });
+    
+    // Create blob link to download
+    const url = window.URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', fileName);
+    document.body.appendChild(link);
+    link.click();
+    link.parentNode.removeChild(link);
+    window.URL.revokeObjectURL(url);
+    return true;
+  },
+};
+
+export default certificateService;

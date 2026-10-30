@@ -1,0 +1,38 @@
+.college-logo-frame {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(15, 23, 84, 0.18);
+}
+
+.college-logo-frame.with-ring {
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.9),
+    0 0 0 4px rgba(66, 165, 245, 0.45),
+    0 4px 12px rgba(15, 23, 84, 0.25);
+}
+
+.college-logo-frame img {
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+.college-logo-frame.is-monogram {
+  background: linear-gradient(140deg, #0f1754 0%, #1a237e 55%, #1e88e5 100%);
+}
+
+.college-monogram {
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  font-family: Georgia, 'Times New Roman', serif;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}

@@ -1,0 +1,16 @@
+.teacher-signup-page {
+  background: linear-gradient(135deg, #fdfbf7 0%, #f5efe6 100%);
+  padding: 3rem 1rem;
+}
+
+.approval-notice {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  margin-bottom: 1.5rem;
+}
+
+.notice-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  color: #0284c7;
+}

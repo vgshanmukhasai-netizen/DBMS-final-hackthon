@@ -1,0 +1,30 @@
+import api from './api';
+
+export const reportService = {
+  getDashboardStats: async () => {
+    const response = await api.get('/reports/dashboard');
+    return response.data;
+  },
+
+  getEventReports: async () => {
+    const response = await api.get('/reports/events');
+    return response.data;
+  },
+
+  getRegistrationReports: async () => {
+    const response = await api.get('/reports/registrations');
+    return response.data;
+  },
+
+  getAttendanceReports: async () => {
+    const response = await api.get('/reports/attendance');
+    return response.data;
+  },
+
+  getDepartmentReports: async () => {
+    const response = await api.get('/reports/departments');
+    return response.data;
+  },
+};
+
+export default reportService;

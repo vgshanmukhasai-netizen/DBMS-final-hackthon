@@ -1,0 +1,308 @@
+/* Quick Actions Card */
+.quick-actions-card {
+  margin-bottom: 2rem;
+}
+
+.quick-actions-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.quick-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f8fafc;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.quick-action-btn:hover {
+  background-color: var(--light-blue-100);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.qa-icon {
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
+/* Two-column overview */
+.two-column-overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.recent-announcements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.announcement-preview-card {
+  background-color: #f8fafc;
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+  border-left: 3px solid var(--accent);
+}
+
+.preview-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.preview-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.preview-date {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.empty-text {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--text-muted);
+}
+
+/* Create Event Form */
+.create-event-card {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.form-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Batch Action Toolbar */
+.batch-action-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  background-color: var(--light-blue-100);
+  border-color: var(--light-blue-200);
+}
+
+.batch-status-text {
+  font-size: 0.95rem;
+  color: var(--primary);
+}
+
+.batch-actions-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.assign-event-selector select {
+  min-width: 220px;
+}
+
+/* Student Filter Grid */
+.student-filter-card {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+}
+
+.student-filter-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.row-selected {
+  background-color: #f0f7ff !important;
+}
+
+/* Announcements Form */
+.announcement-create-card {
+  margin-bottom: 1.5rem;
+}
+
+.announcements-grid-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.announcement-full-card {
+  background-color: #f8fafc;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  padding: 1.25rem;
+  transition: transform 0.2s ease;
+}
+
+.announcement-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.announcement-card-header h4 {
+  font-size: 1.05rem;
+  color: var(--primary);
+  margin-bottom: 3px;
+}
+
+.announcement-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.announcement-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.announcement-card-body {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* Attendance Marking */
+.attendance-select-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.attendance-quick-toggles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.attendance-radio-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.attendance-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.attendance-option.active-present {
+  background-color: var(--success-bg);
+  color: var(--success);
+  border-color: var(--success);
+  font-weight: 700;
+}
+
+.attendance-option.active-absent {
+  background-color: var(--danger-bg);
+  color: var(--danger);
+  border-color: var(--danger);
+  font-weight: 700;
+}
+
+/* Notifications Feed */
+.notifications-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notification-card {
+  padding: 1rem 1.25rem;
+  background-color: #f8fafc;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.notification-card.unread {
+  background-color: #eff6ff;
+  border-left: 4px solid var(--accent);
+}
+
+.notif-feed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.notif-feed-time {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.notif-feed-message {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 992px) {
+  .two-column-overview {
+    grid-template-columns: 1fr;
+  }
+  .student-filter-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .student-filter-grid {
+    grid-template-columns: 1fr;
+  }
+  .batch-action-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

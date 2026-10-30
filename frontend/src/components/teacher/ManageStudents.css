@@ -1,0 +1,41 @@
+.manage-students-component {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.batch-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background-color: var(--light-blue-100);
+  border-color: var(--light-blue-200);
+}
+
+.batch-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.filter-box {
+  padding: 1.25rem;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .filter-grid {
+    grid-template-columns: 1fr;
+  }
+  .batch-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

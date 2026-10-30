@@ -1,0 +1,41 @@
+.admin-login-page {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.admin-login-page .auth-back-link {
+  color: #94a3b8;
+}
+
+.admin-login-page .auth-back-link:hover {
+  color: #f8fafc;
+}
+
+.admin-auth-card {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-badge {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.admin-submit-btn {
+  background-color: #0f172a;
+}
+
+.admin-submit-btn:hover:not(:disabled) {
+  background-color: #1e293b;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.4);
+}
+
+.admin-auth-footer {
+  border-top-color: #f1f5f9;
+}
+
+.admin-notice {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
